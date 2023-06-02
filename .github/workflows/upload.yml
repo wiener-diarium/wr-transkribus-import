@@ -16,4 +16,4 @@ jobs:
       - name: Install Python Packages
         run: pip install -r requirements.txt
       - name: upload data
-        run: fetch_manifest_urls.py
+        run: python fetch_manifest_urls.py
