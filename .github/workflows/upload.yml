@@ -1,0 +1,19 @@
+name: Upload Wiener Diarium to Transkribus
+
+on:
+  workflow_dispatch:
+
+jobs:
+  download:
+    name: Upload Wiener Diarium to Transkribus
+    runs-on: ubuntu-latest
+    env:
+      TRANSKRIBUS_USER: ${{secrets.TRANSKRIBUS_USER}}
+      TRANSKRIBUS_PASSWORD: ${{secrets.TRANSKRIBUS_PASSWORD}}
+    steps:
+      - name: Perfom Checkout
+        uses: actions/checkout@v3
+      - name: Install Python Packages
+        run: pip install -r requirements.txt
+      - name: upload data
+        run: fetch_manifest_urls.py
