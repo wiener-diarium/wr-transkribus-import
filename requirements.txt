@@ -1,1 +1,1 @@
-acdh-transkribus-pyutils
+acdh-transkribus-utils
