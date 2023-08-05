@@ -1,6 +1,5 @@
 import os
 import requests
-import json
 import time
 from tqdm import tqdm
 from transkribus_utils.transkribus_utils import ACDHTranskribusUtils
