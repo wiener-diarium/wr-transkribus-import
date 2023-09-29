@@ -26,12 +26,7 @@ for i in range(START_YEAR, END_YEAR):
         label = x["label"]
         date = label.split()[-1]
         id = f"wrz{date.replace('-', '')}"
-        manifests[id] = {
-            "url": x["@id"],
-            "label": label,
-            "id": id,
-            "date": date
-        }
+        manifests[id] = {"url": x["@id"], "label": label, "id": id, "date": date}
         client.upload_iiif_from_url(x["@id"], col_id)
         time.sleep(1)
 print("done")
