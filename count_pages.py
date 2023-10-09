@@ -1,12 +1,12 @@
 import pandas as pd
-import time
 import requests
+import time
 from config import IIIF_COLLECTION_URL
 from tqdm import tqdm
 
 
 START_YEAR = 1703
-END_YEAR = 1704
+END_YEAR = 1750
 
 data = []
 for i in tqdm(range(START_YEAR, END_YEAR)):
@@ -15,12 +15,14 @@ for i in tqdm(range(START_YEAR, END_YEAR)):
     r = requests.get(iiif_col_url)
     issues = r.json()
     for x in issues["manifests"]:
-        # time.sleep(1)
+        
         issue = requests.get(x["@id"]).json()
         page_count = len(issue["sequences"][0]["canvases"])
         item = {"id": issue["@id"], "title": issue["label"], "pages": page_count}
         data.append(item)
+    time.sleep(2)
 
 df = pd.DataFrame(data)
+save_path = f"years_{START_YEAR}-{END_YEAR}.csv"
 
-df.to_csv("data.csv", index=False)
+df.to_csv(save_path, index=False)
