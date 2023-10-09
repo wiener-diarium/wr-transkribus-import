@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Install Python Packages
         run: pip install -r requirements.txt
-      - name: upload data
+      - name: fetching data
         run: python count_pages.py
       - name: Commit data
         uses: stefanzweifel/git-auto-commit-action@v4
