@@ -14,13 +14,19 @@ for i in tqdm(range(START_YEAR, END_YEAR)):
     print(iiif_col_url)
     r = requests.get(iiif_col_url)
     issues = r.json()
-    for x in issues["manifests"]:
-        
-        issue = requests.get(x["@id"]).json()
-        page_count = len(issue["sequences"][0]["canvases"])
-        item = {"id": issue["@id"], "title": issue["label"], "pages": page_count}
-        data.append(item)
-    time.sleep(2)
+    try:
+        for x in issues["manifests"]:
+
+            issue = requests.get(x["@id"]).json()
+            try:
+                page_count = len(issue["sequences"][0]["canvases"])
+            except:
+                continue
+            item = {"id": issue["@id"], "title": issue["label"], "pages": page_count}
+            data.append(item)
+    except Exception as e:
+        print(f"FAILURE: {i}, {e}")
+        continue
 
 df = pd.DataFrame(data)
 save_path = f"years_{START_YEAR}-{END_YEAR}.csv"
