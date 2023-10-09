@@ -5,7 +5,7 @@ on:
 
 jobs:
   download:
-    name: ounting Pages of Wiener Diariums
+    name: Counting Pages of Wiener Diariums
     runs-on: ubuntu-latest
     steps:
       - name: Perfom Checkout
@@ -13,7 +13,7 @@ jobs:
       - name: Install Python Packages
         run: pip install -r requirements.txt
       - name: upload data
-        run: python count_pages.yml
+        run: python count_pages.py
       - name: Commit data
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
