@@ -5,8 +5,8 @@ from config import IIIF_COLLECTION_URL
 from tqdm import tqdm
 
 
-START_YEAR = 1750
-END_YEAR = 1771
+START_YEAR = 1771
+END_YEAR = 1801
 
 data = []
 for i in tqdm(range(START_YEAR, END_YEAR)):
