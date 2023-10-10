@@ -29,6 +29,6 @@ for i in tqdm(range(START_YEAR, END_YEAR)):
         continue
 
 df = pd.DataFrame(data)
-save_path = f"years_{START_YEAR}-{END_YEAR}.csv"
+save_path = f"years_{START_YEAR}-{END_YEAR - 1}.csv"
 
 df.to_csv(save_path, index=False)
